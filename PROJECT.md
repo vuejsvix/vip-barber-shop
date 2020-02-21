@@ -1,13 +1,14 @@
-Projeto: barber shop vip
+# Projeto Barber Shop VIP
 
-Escopo:  
-  Área pública:  
+Escopo do projeto
+
+## Área pública:  
     - fazer login [`/acesso/entrar`]  
     - criar conta (cliente) [`/acesso/cadastro`]  
     - recuperar senha [`/acesso/recuperar-senha`]  
     - tela de configuração inicial (proprietário) [`/configuracao`]  
 
-  Portal do Gestor:  
+## Portal do Gestor:  
     - painel [`/painel`]  
     - cadastro de usuários (clientes e administradores) [`/painel/administracao/usuarios`]  
     - cadastro de serviço [`/painel/administracao/servicos`]  
@@ -16,7 +17,7 @@ Escopo:
     - relatórios [`/painel/administracao/relatorios`]  
     - fazer logout
 
-  Portal do Cliente:  
+## Portal do Cliente:  
     - painel [`/painel`]  
     - gerenciar seus próprios agendamentos [`/painel/cliente/agendamentos`]  
     - perfil do cliente [`/painel/cliente/perfil`]  
