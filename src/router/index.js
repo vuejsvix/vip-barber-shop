@@ -22,6 +22,7 @@ const router = new VueRouter({
   routes
 })
 
+// valida a rota pública
 router.beforeEach((to, from, next) => {
   const token = $store.state.token
   if (to.meta.public || token) {
@@ -31,13 +32,33 @@ router.beforeEach((to, from, next) => {
   next(inicio)
 })
 
+// valida a sessão
 router.beforeEach((to, from, next) => {
-  const token = $store.state.token
-  const usuario = $store.state.usuario
-  if (!token || usuario) {
+  // se for public ignora e segue o jogo
+  if (to.meta.public) {
     next()
     return
   }
+
+  // pega o token da sessão
+  const token = $store.state.token
+  // não tem token...
+  if (!token) {
+    // cê tá fora champs
+    next({ path: inicio, query: { voltar: to.path } })
+    return
+  }
+
+  // pega o usuário da sessão
+  const usuario = $store.state.usuario
+  // se tem usuário...
+  if (usuario) {
+    // segue o jogo
+    next()
+    return
+  }
+
+  // pega o usuário do servidor
   recuperarUsuario()
     .then((usuario) => $store.dispatch('registrarUsuario', usuario))
     .then(() => next())

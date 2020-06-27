@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import $router from 'src/router'
 import { painel } from 'src/modules/Painel/routes'
+import { inicio } from 'src/modules/Acesso/routes'
 
 Vue.use(Vuex)
 
@@ -43,6 +44,11 @@ export default new Vuex.Store({
       contexto.commit(MUTATION_SALVAR_TOKEN, token)
       escrever(token, lembrar)
       $router.push(painel)
+    },
+    encerrarSessao (contexto) {
+      contexto.commit(MUTATION_SALVAR_TOKEN, '')
+      escrever('')
+      $router.push(inicio)
     },
     registrarUsuario (contexto, usuario) {
       contexto.commit(MUTATION_CARREGAR_USUARIO, usuario)

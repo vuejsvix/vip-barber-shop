@@ -52,14 +52,14 @@
           label="Email"
           prepend-icon="mdi-email"
           color="purple"
-          v-model="registro.email"
+          v-model="registro.username"
         />
         <v-text-field
           type="password"
           label="Senha"
           prepend-icon="mdi-lock-outline"
           color="purple"
-          v-model="registro.senha"
+          v-model="registro.password"
         />
       </v-card-text>
       <v-card-actions>
@@ -94,8 +94,8 @@ export default {
   name: 'Entrar',
   data: () => ({
     registro: {
-      email: 'wilcorrea@gmail.com',
-      senha: 'aq1sw2de3'
+      username: 'root',
+      password: 'aq1sw2de3'
     }
   }),
   methods: {
@@ -109,7 +109,8 @@ export default {
     /**
      */
     entrarSucesso (resposta) {
-      this.$store.dispatch('criarSessao', { ...resposta, lembrar: false })
+      const { token } = resposta
+      this.$store.dispatch('criarSessao', { token, lembrar: false })
     },
     /**
      */

@@ -96,25 +96,11 @@
         class="hidden-sm-and-down"
       />
       <v-spacer />
-      <v-btn icon>
-        <v-icon>mdi-apps</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-bell</v-icon>
-      </v-btn>
       <v-btn
         icon
-        large
+        @click="encerrarSessao"
       >
-        <v-avatar
-          size="32px"
-          item
-        >
-          <v-img
-            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-            alt="Vuetify"
-          />
-        </v-avatar>
+        <v-icon>power_settings_new</v-icon>
       </v-btn>
     </v-app-bar>
     <v-content>
@@ -267,6 +253,11 @@ export default {
       { icon: 'mdi-cellphone-link', text: 'App downloads' },
       { icon: 'mdi-keyboard', text: 'Go to the old version' }
     ]
-  })
+  }),
+  methods: {
+    encerrarSessao () {
+      this.$store.dispatch('encerrarSessao')
+    }
+  }
 }
 </script>
