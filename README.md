@@ -1,4 +1,4 @@
-# foobar
+# Barber Shop
 
 ## Project setup
 ```
